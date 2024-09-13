@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     siteName: "Mahesh Muttinti - Full Stack Web & Mobile App Developer",
     locale: "en",
     type: "website",
-    images: ["https://amarendradeveloper.in/brand_banner.webp"],
+    images: ["https://amarendradeveloper.in/brand-banner.webp"],
   },
   twitter: {
     card: "summary_large_image",
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
     description:
       "Amarendra Varma is a Full Stack Developer skilled in React, React Native, and Node.js. He builds dynamic web and mobile applications, utilizing MongoDB for backend integration. His strong foundation in design principles ensures intuitive and user-friendly solutions.",
     creator: "@AmarVarma",
-    images: ["https://amarendradeveloper.in/brand_banner.webp"],
+    images: ["https://amarendradeveloper.in/brand-banner.webp"],
   },
 };
 
