@@ -1,11 +1,12 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import {
   ArrowRightIcon,
   BriefcaseIcon,
   AcademicCapIcon,
   PhoneIcon,
+  ArrowUpIcon,
 } from "@heroicons/react/outline";
 
 const sectionVariants = {
@@ -15,10 +16,31 @@ const sectionVariants = {
 
 export default function Home() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [showScrollToTop, setShowScrollToTop] = useState(false);
 
   const toggleMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
+
+  const handleScroll = () => {
+    if (window.scrollY > 200) {
+      setShowScrollToTop(true);
+    } else {
+      setShowScrollToTop(false);
+    }
+  };
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <div className="mx-auto min-h-screen bg-black text-gray-300">
@@ -285,6 +307,15 @@ export default function Home() {
             </div>
           </div>
         </footer>
+        {showScrollToTop && (
+          <button
+            onClick={scrollToTop}
+            className="fixed bottom-4 right-4 bg-indigo-600 text-white rounded-full p-3 shadow-lg hover:bg-indigo-700 transition"
+            aria-label="Scroll to top"
+          >
+            <ArrowUpIcon className="h-6 w-6" />
+          </button>
+        )}
       </main>
     </div>
   );
