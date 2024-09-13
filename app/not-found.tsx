@@ -1,18 +1,31 @@
+"use client";
 import Link from "next/link";
+import { motion } from "framer-motion";
+
+const pageVariants = {
+  hidden: { opacity: 0, scale: 0.9 },
+  visible: { opacity: 1, scale: 1, transition: { duration: 0.5 } },
+};
 
 export default function NotFound() {
   return (
-    <div className="container flex flex-col text-center justify-center items-center mx-auto md:mt-0 mt-6">
-      <h1 className="text-6xl text-red-500 font-bold mb-4">404</h1>
-      <p className="text-xl text-red-600 mb-8">Page Not Found</p>
-      <Link
-        prefetch={false}
-        href={"/"}
-        title="Home Page"
-        className="text-white from-violet-400 font-bold to-violet-600 bg-gradient-to-r w-max rounded-md p-2"
+    <div className="flex items-center justify-center min-h-screen bg-teal-900 text-gray-300">
+      <motion.div
+        initial="hidden"
+        animate="visible"
+        variants={pageVariants}
+        className="text-center p-8 bg-teal-700 rounded-lg shadow-md"
       >
-        Go to Home Page
-      </Link>
+        <h1 className="text-6xl font-bold text-tomato-500 mb-4">404</h1>
+        <p className="text-2xl mb-6">
+          {"Oops! The page you're looking for doesn't exist."}
+        </p>
+        <Link href="/">
+          <button className="px-6 py-3 bg-tomato-500 text-white rounded-lg font-semibold hover:bg-tomato-600 transition">
+            Go Back Home
+          </button>
+        </Link>
+      </motion.div>
     </div>
   );
 }
