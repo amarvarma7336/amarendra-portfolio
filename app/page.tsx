@@ -141,7 +141,7 @@ export default function Home() {
 
         {/* Mobile Menu */}
         <div
-          className={`lg:hidden fixed inset-0 bg-slate-800 bg-opacity-75 backdrop-blur-md z-40 ${
+          className={`lg:hidden fixed h-screen z-[100] inset-0 bg-slate-800 bg-opacity-75 backdrop-blur-md ${
             isMobileMenuOpen ? "block" : "hidden"
           }`}
         >
@@ -166,16 +166,21 @@ export default function Home() {
                 ></path>
               </svg>
             </button>
-            {navItems.map((item) => (
-              <a
-                key={item.id}
-                href={`#${item.id}`}
-                className="text-white text-2xl py-4"
-                onClick={() => setActiveSection(item.id)}
-              >
-                {item.title}
-              </a>
-            ))}
+            <nav className="flex flex-col items-center space-y-4">
+              {navItems.map((item) => (
+                <a
+                  key={item.id}
+                  href={`#${item.id}`}
+                  className="text-white text-2xl py-4"
+                  onClick={() => {
+                    setActiveSection(item.id);
+                    toggleMenu(); // Close menu on click
+                  }}
+                >
+                  {item.title}
+                </a>
+              ))}
+            </nav>
           </div>
         </div>
       </header>
