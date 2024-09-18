@@ -10,12 +10,11 @@
 
 @layer components {
   .bg-scratch-pattern {
-    background-image: url('/marvel-pics/scratch-neon-effect.webp'); /* Path to your scratch pattern */
+    background-image: url("/marvel-pics/scratch-neon-effect.webp"); /* Path to your scratch pattern */
     background-repeat: repeat;
     background-size: cover;
   }
 }
-
 
 @media (prefers-color-scheme: dark) {
   :root {
@@ -33,5 +32,16 @@ body {
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+  .parallax {
+    background-attachment: fixed;
+    background-size: cover;
+    /* will-change: transform; */
+    background-position: center;
+  }
+  @media (max-width: 768px) {
+    .parallax {
+      background-attachment: scroll; /* Parallax effect is often less effective on mobile */
+    }
   }
 }

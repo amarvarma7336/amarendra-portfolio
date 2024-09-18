@@ -49,31 +49,40 @@ export default function Home() {
   };
 
   const handleScroll = () => {
-    if (window.scrollY > 200) {
+    const scrollY = window.scrollY;
+
+    // Toggle Scroll to Top button visibility
+    if (scrollY > 200) {
       setShowScrollToTop(true);
     } else {
       setShowScrollToTop(false);
     }
 
+    // Active Section logic
     const sections = document.querySelectorAll("section");
     let currentSection: string | null = "";
-    sections.forEach(section => {
+    sections.forEach((section) => {
       const sectionTop = section.offsetTop - 60;
       const sectionHeight = section.offsetHeight;
-      if (
-        window.scrollY >= sectionTop &&
-        window.scrollY < sectionTop + sectionHeight
-      ) {
+      if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
         currentSection = section.getAttribute("id");
       }
     });
     setActiveSection(currentSection);
+
+    // Parallax effect with fallback
+    const parallaxElements = document.querySelectorAll(".parallax");
+    parallaxElements.forEach((element: any) => {
+      const speed = element.getAttribute("data-speed") // Fallback speed
+      const yPos = -(scrollY * speed) / 100;
+      element.style.transform = `translateY(${yPos}px)`;
+    });
   };
 
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
-      behavior: "smooth"
+      behavior: "smooth",
     });
   };
 
@@ -85,7 +94,7 @@ export default function Home() {
   return (
     <div className="mx-auto min-h-screen bg-slate-900 text-gray-300">
       {/* Header */}
-      <header className="fixed top-0 w-full bg-slate-800 bg-opacity-60 backdrop-blur-md shadow-lg z-50">
+      <header className="fixed top-0 w-full bg-slate-800 bg-opacity-60 backdrop-blur-md shadow-lg z-50 parallax">
         <nav className="flex justify-between items-center p-4 max-w-7xl mx-auto">
           <div className="text-2xl font-bold text-white">
             <a
@@ -232,9 +241,9 @@ export default function Home() {
       </section>
       <main className="container mx-auto">
         {/* Profile Section */}
-        <section id="profile" className="relative py-24 bg-slate-800">
+        <section id="profile" data-speed='40' className="parallax h-full relative py-24 bg-slate-800">
           <div className="absolute w-full h-full inset-0 z-20 bg-scratch-pattern mix-blend-overlay"></div>
-          <div className="max-w-7xl mx-auto px-6">
+          <div className="max-w-7xl mx-auto px-6 z-10">
             <motion.div
               initial="hidden"
               whileInView="visible"
@@ -583,7 +592,7 @@ export default function Home() {
       {showScrollToTop && (
         <button
           onClick={scrollToTop}
-          className="fixed bottom-6 right-6 bg-tomato-500 text-white p-3 rounded-full shadow-lg hover:bg-tomato-600 transition"
+          className="fixed z-[101] bottom-6 right-6 bg-tomato-500 text-white p-3 rounded-full shadow-lg hover:bg-tomato-600 transition"
           aria-label="Scroll to top"
         >
           <ArrowUpIcon className="h-6 w-6" />
