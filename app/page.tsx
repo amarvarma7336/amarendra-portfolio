@@ -5,7 +5,7 @@ import {
   BriefcaseIcon,
   AcademicCapIcon,
   // PhoneIcon,
-  ArrowUpIcon
+  ArrowUpIcon,
 } from "@heroicons/react/outline";
 import { FaLinkedin, FaGithub, FaInstagram } from "react-icons/fa";
 import { HiMail, HiPhone } from "react-icons/hi";
@@ -17,26 +17,28 @@ const github = "https://github.com/amarvarma7336";
 const email = "amarvarma7336@gmail.com";
 const phone = "+91-9390018847";
 
+type ParallaxElement = HTMLElement & { dataset: { speed?: string } };
+
 const sectionVariants = {
   hidden: { opacity: 0, y: 100 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.8 } }
+  visible: { opacity: 1, y: 0, transition: { duration: 0.8 } },
 };
 
 const cardHoverVariants = {
   initial: { scale: 1 },
-  hover: { scale: 1.05 }
+  hover: { scale: 1.05 },
 };
 
 const textVariants = {
   initial: { opacity: 0, y: 50 },
   animate: { opacity: 1, y: 0 },
-  exit: { opacity: 0, y: -50 }
+  exit: { opacity: 0, y: -50 },
 };
 
 const buttonVariants = {
   initial: { opacity: 0, scale: 0.8 },
   animate: { opacity: 1, scale: 1 },
-  hover: { scale: 1.1 }
+  hover: { scale: 1.1 },
 };
 
 export default function Home() {
@@ -72,10 +74,13 @@ export default function Home() {
 
     // Parallax effect with fallback
     const parallaxElements = document.querySelectorAll(".parallax");
-    parallaxElements.forEach((element: any) => {
-      const speed = element.getAttribute("data-speed") // Fallback speed
+    parallaxElements.forEach((element) => {
+      const parallaxElement = element as ParallaxElement;
+      const speed = parallaxElement.dataset.speed
+        ? parseFloat(parallaxElement.dataset.speed)
+        : 0.5; // Fallback speed
       const yPos = -(scrollY * speed) / 100;
-      element.style.transform = `translateY(${yPos}px)`;
+      parallaxElement.style.transform = `translateY(${yPos}px)`;
     });
   };
 
@@ -131,7 +136,7 @@ export default function Home() {
             </button>
           </div>
           <div className="hidden lg:flex space-x-8">
-            {navItems.map(item => (
+            {navItems.map((item) => (
               <a
                 key={item.id}
                 href={`#${item.id}`}
@@ -176,7 +181,7 @@ export default function Home() {
               </svg>
             </button>
             <nav className="flex flex-col items-center space-y-4">
-              {navItems.map(item => (
+              {navItems.map((item) => (
                 <a
                   key={item.id}
                   href={`#${item.id}`}
@@ -241,7 +246,11 @@ export default function Home() {
       </section>
       <main className="container mx-auto">
         {/* Profile Section */}
-        <section id="profile" data-speed='40' className="parallax h-full relative py-24 bg-slate-800">
+        <section
+          id="profile"
+          data-speed="40"
+          className="parallax h-full relative py-24 bg-slate-800"
+        >
           <div className="absolute w-full h-full inset-0 z-20 bg-scratch-pattern mix-blend-overlay"></div>
           <div className="max-w-7xl mx-auto px-6 z-10">
             <motion.div
@@ -393,14 +402,14 @@ export default function Home() {
                 {[
                   "Version Control with Git",
                   "Proficient in HTML, CSS, & JavaScript",
-                  "Expertise in React and Node.js"
+                  "Expertise in React and Node.js",
                 ].map((skill, index) => (
                   <motion.div
                     key={index}
                     className="bg-slate-800 p-4 rounded-lg shadow-lg text-center transform"
                     whileHover={{
                       scale: 1.05,
-                      boxShadow: "0px 0px 15px rgba(0,0,0,0.3)"
+                      boxShadow: "0px 0px 15px rgba(0,0,0,0.3)",
                     }}
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -439,14 +448,14 @@ export default function Home() {
                   "Artificial Intelligence",
                   "Machine Learning",
                   "Client Engagement",
-                  "Quality Assurance"
+                  "Quality Assurance",
                 ].map((competency, index) => (
                   <motion.div
                     key={index}
                     className="bg-slate-800 p-4 rounded-lg shadow-lg text-center transform"
                     whileHover={{
                       scale: 1.1,
-                      boxShadow: "0px 0px 15px rgba(0,0,0,0.3)"
+                      boxShadow: "0px 0px 15px rgba(0,0,0,0.3)",
                     }}
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -651,7 +660,7 @@ const navItems = [
   { id: "education", title: "Education" },
   { id: "technical-skills", title: "Technical Skills" },
   { id: "core-competence", title: "Core Competence" },
-  { id: "contact", title: "Contact" }
+  { id: "contact", title: "Contact" },
 ];
 
 const profileCards = [
@@ -659,19 +668,19 @@ const profileCards = [
     icon: BriefcaseIcon,
     title: "Innovative Solutions",
     description:
-      "Expert in crafting cutting-edge web and mobile applications using modern technologies."
+      "Expert in crafting cutting-edge web and mobile applications using modern technologies.",
   },
   {
     icon: BriefcaseIcon,
     title: "Agile Development",
     description:
-      "Experience in agile methodologies ensuring timely delivery of projects."
+      "Experience in agile methodologies ensuring timely delivery of projects.",
   },
   {
     icon: BriefcaseIcon,
     title: "User Experience",
-    description: "Focus on creating intuitive and user-friendly interfaces."
-  }
+    description: "Focus on creating intuitive and user-friendly interfaces.",
+  },
 ];
 
 const experienceCards = [
@@ -682,8 +691,8 @@ const experienceCards = [
     responsibilities: [
       "Developed and maintained web applications using React and Next.js.",
       "Implemented RESTful APIs and integrated with backend services.",
-      "Led a team of developers in project planning and execution."
-    ]
+      "Led a team of developers in project planning and execution.",
+    ],
   },
   {
     role: "Frontend Developer",
@@ -692,8 +701,8 @@ const experienceCards = [
     responsibilities: [
       "Built responsive web pages using React and TailwindCSS.",
       "Worked on UI/UX improvements and bug fixes.",
-      "Collaborated with designers to implement new features."
-    ]
+      "Collaborated with designers to implement new features.",
+    ],
   },
   {
     role: "Full Stack Developer",
@@ -704,9 +713,9 @@ const experienceCards = [
       "Contributed to a critical data analysis project, boosting client operational efficiency by 25% through complex dataset visualization.",
       "Developed a comprehensive business management app with React for web and React Native for mobile, supporting medium-sized business operations.",
       "Implemented secure Node.js API and integrated ICICI bank APIs, enabling real-time transactions and direct payments within the application.",
-      "Used nx mono repo workspace to build multiple projects in one repository."
-    ]
-  }
+      "Used nx mono repo workspace to build multiple projects in one repository.",
+    ],
+  },
 ];
 
 const educationCards = [
@@ -715,6 +724,6 @@ const educationCards = [
     institution: "Mahatma Gandhi University",
     duration: "2017 - 2020",
     details:
-      "Graduated with a focus on full-stack development and data structures."
-  }
+      "Graduated with a focus on full-stack development and data structures.",
+  },
 ];
