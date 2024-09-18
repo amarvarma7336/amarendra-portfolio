@@ -5,7 +5,7 @@ import {
   BriefcaseIcon,
   AcademicCapIcon,
   // PhoneIcon,
-  ArrowUpIcon,
+  ArrowUpIcon
 } from "@heroicons/react/outline";
 import { FaLinkedin, FaGithub, FaInstagram } from "react-icons/fa";
 import { HiMail, HiPhone } from "react-icons/hi";
@@ -19,24 +19,24 @@ const phone = "+91-9390018847";
 
 const sectionVariants = {
   hidden: { opacity: 0, y: 100 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.8 } },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.8 } }
 };
 
 const cardHoverVariants = {
   initial: { scale: 1 },
-  hover: { scale: 1.05 },
+  hover: { scale: 1.05 }
 };
 
 const textVariants = {
   initial: { opacity: 0, y: 50 },
   animate: { opacity: 1, y: 0 },
-  exit: { opacity: 0, y: -50 },
+  exit: { opacity: 0, y: -50 }
 };
 
 const buttonVariants = {
   initial: { opacity: 0, scale: 0.8 },
   animate: { opacity: 1, scale: 1 },
-  hover: { scale: 1.1 },
+  hover: { scale: 1.1 }
 };
 
 export default function Home() {
@@ -57,7 +57,7 @@ export default function Home() {
 
     const sections = document.querySelectorAll("section");
     let currentSection: string | null = "";
-    sections.forEach((section) => {
+    sections.forEach(section => {
       const sectionTop = section.offsetTop - 60;
       const sectionHeight = section.offsetHeight;
       if (
@@ -73,7 +73,7 @@ export default function Home() {
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
-      behavior: "smooth",
+      behavior: "smooth"
     });
   };
 
@@ -122,7 +122,7 @@ export default function Home() {
             </button>
           </div>
           <div className="hidden lg:flex space-x-8">
-            {navItems.map((item) => (
+            {navItems.map(item => (
               <a
                 key={item.id}
                 href={`#${item.id}`}
@@ -167,7 +167,7 @@ export default function Home() {
               </svg>
             </button>
             <nav className="flex flex-col items-center space-y-4">
-              {navItems.map((item) => (
+              {navItems.map(item => (
                 <a
                   key={item.id}
                   href={`#${item.id}`}
@@ -185,8 +185,18 @@ export default function Home() {
         </div>
       </header>
       {/* Hero Section */}
-      <section className="h-screen flex justify-center items-center bg-gradient-to-r from-slate-900 to-slate-700">
-        <div className="text-center text-white">
+      <section className="h-screen overflow-hidden relative flex justify-center items-center bg-gradient-to-r from-slate-900 to-slate-700">
+        <video
+          className="absolute top-0 left-0 w-full h-full object-cover md:object-contain z-0"
+          src="marvel-pics/iron-manfirey-effect.mp4"
+          autoPlay
+          loop
+          muted
+          playsInline
+        />
+        <div className="md:absolute h-full md:w-full md:bg-slate-700 md:bottom-0 bg-[url('/marvel-pics/all-marvel-characters-massive-pic.webp')] bg-cover bg-center bg-no-repeat"></div>
+
+        <div className="relative z-10 text-center text-white backdrop-blur-sm bg-black/30 p-8 rounded-lg">
           <motion.h1
             variants={textVariants}
             initial="initial"
@@ -222,7 +232,8 @@ export default function Home() {
       </section>
       <main className="container mx-auto">
         {/* Profile Section */}
-        <section id="profile" className="py-24 bg-slate-800">
+        <section id="profile" className="relative py-24 bg-slate-800">
+          <div className="absolute w-full h-full inset-0 z-20 bg-scratch-pattern mix-blend-overlay"></div>
           <div className="max-w-7xl mx-auto px-6">
             <motion.div
               initial="hidden"
@@ -373,14 +384,14 @@ export default function Home() {
                 {[
                   "Version Control with Git",
                   "Proficient in HTML, CSS, & JavaScript",
-                  "Expertise in React and Node.js",
+                  "Expertise in React and Node.js"
                 ].map((skill, index) => (
                   <motion.div
                     key={index}
                     className="bg-slate-800 p-4 rounded-lg shadow-lg text-center transform"
                     whileHover={{
                       scale: 1.05,
-                      boxShadow: "0px 0px 15px rgba(0,0,0,0.3)",
+                      boxShadow: "0px 0px 15px rgba(0,0,0,0.3)"
                     }}
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -419,14 +430,14 @@ export default function Home() {
                   "Artificial Intelligence",
                   "Machine Learning",
                   "Client Engagement",
-                  "Quality Assurance",
+                  "Quality Assurance"
                 ].map((competency, index) => (
                   <motion.div
                     key={index}
                     className="bg-slate-800 p-4 rounded-lg shadow-lg text-center transform"
                     whileHover={{
                       scale: 1.1,
-                      boxShadow: "0px 0px 15px rgba(0,0,0,0.3)",
+                      boxShadow: "0px 0px 15px rgba(0,0,0,0.3)"
                     }}
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -631,7 +642,7 @@ const navItems = [
   { id: "education", title: "Education" },
   { id: "technical-skills", title: "Technical Skills" },
   { id: "core-competence", title: "Core Competence" },
-  { id: "contact", title: "Contact" },
+  { id: "contact", title: "Contact" }
 ];
 
 const profileCards = [
@@ -639,19 +650,19 @@ const profileCards = [
     icon: BriefcaseIcon,
     title: "Innovative Solutions",
     description:
-      "Expert in crafting cutting-edge web and mobile applications using modern technologies.",
+      "Expert in crafting cutting-edge web and mobile applications using modern technologies."
   },
   {
     icon: BriefcaseIcon,
     title: "Agile Development",
     description:
-      "Experience in agile methodologies ensuring timely delivery of projects.",
+      "Experience in agile methodologies ensuring timely delivery of projects."
   },
   {
     icon: BriefcaseIcon,
     title: "User Experience",
-    description: "Focus on creating intuitive and user-friendly interfaces.",
-  },
+    description: "Focus on creating intuitive and user-friendly interfaces."
+  }
 ];
 
 const experienceCards = [
@@ -662,8 +673,8 @@ const experienceCards = [
     responsibilities: [
       "Developed and maintained web applications using React and Next.js.",
       "Implemented RESTful APIs and integrated with backend services.",
-      "Led a team of developers in project planning and execution.",
-    ],
+      "Led a team of developers in project planning and execution."
+    ]
   },
   {
     role: "Frontend Developer",
@@ -672,8 +683,8 @@ const experienceCards = [
     responsibilities: [
       "Built responsive web pages using React and TailwindCSS.",
       "Worked on UI/UX improvements and bug fixes.",
-      "Collaborated with designers to implement new features.",
-    ],
+      "Collaborated with designers to implement new features."
+    ]
   },
   {
     role: "Full Stack Developer",
@@ -684,9 +695,9 @@ const experienceCards = [
       "Contributed to a critical data analysis project, boosting client operational efficiency by 25% through complex dataset visualization.",
       "Developed a comprehensive business management app with React for web and React Native for mobile, supporting medium-sized business operations.",
       "Implemented secure Node.js API and integrated ICICI bank APIs, enabling real-time transactions and direct payments within the application.",
-      "Used nx mono repo workspace to build multiple projects in one repository.",
-    ],
-  },
+      "Used nx mono repo workspace to build multiple projects in one repository."
+    ]
+  }
 ];
 
 const educationCards = [
@@ -695,6 +706,6 @@ const educationCards = [
     institution: "Mahatma Gandhi University",
     duration: "2017 - 2020",
     details:
-      "Graduated with a focus on full-stack development and data structures.",
-  },
+      "Graduated with a focus on full-stack development and data structures."
+  }
 ];
