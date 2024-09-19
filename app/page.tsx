@@ -244,12 +244,11 @@ export default function Home() {
           </motion.a>
         </div>
       </section>
-      <main className="container mx-auto">
+      <main className="container mx-auto ">
         {/* Profile Section */}
         <section
           id="profile"
-          data-speed="40"
-          className="parallax h-full relative py-24 bg-slate-800"
+          className="h-full relative py-24 bg-gradient-to-tr from-slate-800 to-slate-400"
         >
           <div className="absolute w-full h-full inset-0 z-20 bg-scratch-pattern mix-blend-overlay"></div>
           <div className="max-w-7xl mx-auto px-6 z-10">
@@ -294,8 +293,12 @@ export default function Home() {
         </section>
 
         {/* Experience Section */}
-        <section id="experience" className="py-24 bg-slate-900">
-          <div className="max-w-7xl mx-auto px-6">
+        <section
+          id="experience"
+          className="relative bg-gradient-to-r from-slate-800 to-slate-500"
+        >
+          
+          <div className="max-w-7xl mx-auto px-6 relative py-12">
             <motion.div
               initial="hidden"
               whileInView="visible"
@@ -310,6 +313,7 @@ export default function Home() {
                 3+ years of experience in full-stack development, focusing on
                 web and mobile solutions.
               </p>
+            <div className="absolute w-full h-full inset-0 z-20 bg-scratch-pattern-2 mix-blend-overlay"></div>
             </motion.div>
 
             {/* Experience Cards */}
@@ -320,7 +324,7 @@ export default function Home() {
                   variants={cardHoverVariants}
                   initial="initial"
                   whileHover="hover"
-                  className="bg-slate-700 p-6 rounded-lg shadow-md flex flex-col items-center transform transition-transform hover:shadow-xl"
+                  className="bg-gradient-to-r from-slate-800 to-slate-900 relative p-6 rounded-lg shadow-md flex flex-col items-center transform transition-transform hover:shadow-xl"
                 >
                   <BriefcaseIcon className="h-12 w-12 text-tomato-400 mb-4" />
                   <h3 className="text-2xl font-semibold mb-2 text-white">
@@ -342,7 +346,12 @@ export default function Home() {
         </section>
 
         {/* Education Section */}
-        <section id="education" className="py-24 bg-slate-800">
+        <section
+          id="education"
+          className="relative py-24 bg-gradient-to-bl from-slate-800 to-slate-500"
+        >
+          <div className="absolute inset-0 z-0 bg-scratch-pattern-1 mix-blend-overlay"></div>
+
           <div className="max-w-7xl mx-auto px-6">
             <motion.div
               initial="hidden"
@@ -367,7 +376,7 @@ export default function Home() {
                   variants={cardHoverVariants}
                   initial="initial"
                   whileHover="hover"
-                  className="bg-slate-700 p-6 rounded-lg shadow-md flex flex-col items-center transform transition-transform hover:shadow-xl"
+                  className="bg-slate-900 p-6 rounded-lg shadow-md flex flex-col items-center transform transition-transform hover:shadow-xl"
                 >
                   <AcademicCapIcon className="h-12 w-12 text-tomato-400 mb-4" />
                   <h3 className="text-2xl font-semibold mb-2 text-white">
@@ -386,7 +395,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="technical-skills" className="py-16 bg-slate-900">
+        <section id="technical-skills" className="py-16 bg-gradient-to-l from-slate-900 to-gray-500">
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -423,7 +432,7 @@ export default function Home() {
           </motion.div>
         </section>
 
-        <section id="core-competence" className="py-16 bg-slate-900">
+        <section id="core-competence" className="py-16 bg-gradient-to-br from-slate-900 to-gray-500 ">
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -470,8 +479,9 @@ export default function Home() {
         </section>
 
         {/* Contact Section */}
-        <section id="contact" className="py-24 bg-slate-900">
-          <div className="max-w-7xl mx-auto px-6">
+        <section id="contact" className="py-24 bg-slate-900 relative bg-scratch-pattern-3">
+
+          <div className="max-w-7xl mx-auto px-6 mix-blend-lighten ">
             <motion.div
               initial="hidden"
               whileInView="visible"

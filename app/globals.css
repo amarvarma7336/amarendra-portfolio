@@ -14,6 +14,21 @@
     background-repeat: repeat;
     background-size: cover;
   }
+  .bg-scratch-pattern-1 {
+    background-image: url("/marvel-pics/wonder-woman-left-hand-pos-1.webp"); /* Path to your scratch pattern */
+    background-repeat: repeat;
+    background-size: cover;
+  }
+  .bg-scratch-pattern-2 {
+    background-image: url("/marvel-pics/doctor_strange_with_his_powers.jpeg"); /* Path to your scratch pattern */
+    background-repeat: repeat;
+    background-size: cover;
+  }
+  .bg-scratch-pattern-3 {
+    background-image: url("/marvel-pics/wonder-woman-up-hand-pos-1.webp"); /* Path to your scratch pattern */
+    background-repeat: repeat;
+    background-size: cover;
+  }
 }
 
 @media (prefers-color-scheme: dark) {
